@@ -1,0 +1,29 @@
+상관관계 
+importance 
+스케일링
+
+형변환 
+
+몇개의 컬럼만으로 학습하는게 나을거 같음
+
+outlier 빼는거 
+정규화 
+--------------------------------------------------------------------------------------------
+
+time 데이터 -> 날짜(시간 흐름) 평일 주말 낮 밤  
+
+# 년도는 동일, 월, 일, 시간, 요일 추출 
+
+경도 위도가 필요한가?  -> 비슷한 지역 묶을 수 있음 
+
+모든 컬럼을 쓸것인가? 어떤 컬럼이 의미 있을것인가?
+
+모든 레코드를 수용할것인가?
+아니라면 어떤 기준으로 레코드를 drop 시킬것인가?
+아니면 데이터를 묶어서 따로 학습 시킬것인가?
+
+'vendor_id','passenger_count'
+           #, 'pickup_datetime'
+           ,'pickup_date','pickup_day','pickup_hour','pickup_weekday'
+           ,'pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude'
+
