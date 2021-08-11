@@ -1,6 +1,9 @@
 
 ## ML 관련 [PDF](https://github.com/okso6441-ksh/ML/tree/master/pdf) 자료
 
+## [Visualization](https://github.com/okso6441-ksh/ML/tree/master/Visualization)  
+> matplotlib, plotly, [Tableau](https://github.com/okso6441-ksh/ML/tree/master/Visualization/Tableau)   
+
 ## 문제별 Baseline   
 ### [classfication_baseline](https://github.com/okso6441-ksh/ML/tree/master/Baseline/classfication_baseline.ipynb)  
 > 전처리(결측치, 이상치, 형변환, 첨도/왜도, 정규화), 상관관계분석, 데이터분리, SMOTE 오버샘플링, 모델링, 중요도 분석, GridSearchCV, 앙상블, 스태킹, 차원축소(PCA, LDA, SVD, NMF)  
