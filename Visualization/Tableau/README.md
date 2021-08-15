@@ -10,7 +10,10 @@
 * ch_04.pdf  
 > 계산된 필드, IF 함수(IIF), 매개변수, 집합, 캡션  
 * ch_05.pdf  
-> 테이블 계산, INDEX/SIZE/RANK/TOTAL, WINDOW(RANDOM, 노멀라이즈)
+> 테이블 계산, INDEX/SIZE/RANK/TOTAL, WINDOW(RANDOM, 노멀라이즈), LAST, LOOKUP, 파레토 차트  
+* ch_06.pdf  
+> LOD 표현식
+
 ---
 * 태블로 제품  
   * 데이터 준비: 태블로 프렙   
