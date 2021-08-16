@@ -12,7 +12,7 @@
 * ch_05.pdf  
 > 테이블 계산, INDEX/SIZE/RANK/TOTAL, WINDOW(RANDOM, 노멀라이즈), LAST, LOOKUP, 파레토 차트  
 * ch_06.pdf  
-> LOD 표현식
+> LOD 표현식, INCLUDE/EXCLUDE/FIXED    
 
 ---
 * 태블로 제품  
