@@ -1,0 +1,2969 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20202.21.0709.1526                               -->
+<workbook original-version='18.1' source-build='2020.2.16 (20202.21.0709.1526)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='일별 매출 목표' datatype='real' name='[매개 변수 1]' param-domain-type='any' role='measure' type='quantitative' value='2000000.'>
+        <calculation class='tableau' formula='2000000.' />
+      </column>
+      <column caption='월별 매출 목표' datatype='real' name='[일별 매출 목표(복사본)_1280429676492009479]' param-domain-type='any' role='measure' type='quantitative' value='30000000.'>
+        <calculation class='tableau' formula='30000000.' />
+      </column>
+    </datasource>
+    <datasource caption='전사실적 대시보드 데이터' inline='true' name='federated.0hcrxkj009syhx171p1u20a8rt00' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Sample - Local Sales(2019)' name='textscan.16pho7d17lg6d217nvhhy1akax87'>
+            <connection class='textscan' directory='C:/Users/okso6/temp/패스트캠퍼스/Tableau/chapter07' filename='Sample - Local Sales(2019).csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation all='true' name='Sample - Local Sales(2019).csv+' type='union'>
+          <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+            <column datatype='integer' name='Seq' />
+            <column datatype='integer' name='Member Code' />
+            <column datatype='string' name='Channel' />
+            <column datatype='string' name='Order No' />
+            <column datatype='date' name='Sales Date' />
+            <column datatype='string' name='Store Code' />
+            <column datatype='integer' name='Pos seq' />
+            <column datatype='string' name='Item Code' />
+            <column datatype='integer' name='Quantity' />
+            <column datatype='integer' name='Discount' />
+            <column datatype='integer' name='Amount' />
+            <column datatype='string' name='Staff Code' />
+            <column datatype='date' name='Paid Date' />
+            <column datatype='date' name='Deliver Date' />
+            <column datatype='string' name='Table Name' />
+          </columns>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2019).csv' table='[Sample - Local Sales(2019)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='integer' name='Member Code' ordinal='1' />
+              <column datatype='string' name='Channel' ordinal='2' />
+              <column datatype='string' name='Order No' ordinal='3' />
+              <column datatype='date' name='Sales Date' ordinal='4' />
+              <column datatype='string' name='Store Code' ordinal='5' />
+              <column datatype='integer' name='Pos seq' ordinal='6' />
+              <column datatype='string' name='Item Code' ordinal='7' />
+              <column datatype='integer' name='Quantity' ordinal='8' />
+              <column datatype='integer' name='Discount' ordinal='9' />
+              <column datatype='integer' name='Amount' ordinal='10' />
+              <column datatype='string' name='Staff Code' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - e-commerce(All).csv' table='[Sample - e-commerce(All)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='integer' name='Member Code' ordinal='1' />
+              <column datatype='string' name='Channel' ordinal='2' />
+              <column datatype='real' name='Order No' ordinal='3' />
+              <column datatype='date' name='Sales Date' ordinal='4' />
+              <column datatype='date' name='Paid Date' ordinal='5' />
+              <column datatype='date' name='Deliver Date' ordinal='6' />
+              <column datatype='string' name='Store Code' ordinal='7' />
+              <column datatype='integer' name='Pos Seq' ordinal='8' />
+              <column datatype='string' name='Item Code' ordinal='9' />
+              <column datatype='integer' name='Quantity' ordinal='10' />
+              <column datatype='integer' name='Discount' ordinal='11' />
+              <column datatype='integer' name='Amount' ordinal='12' />
+              <column datatype='string' name='Staff Code' ordinal='13' />
+            </columns>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Global Sales(All).csv' table='[Sample - Global Sales(All)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='integer' name='Member Code' ordinal='1' />
+              <column datatype='string' name='Channel' ordinal='2' />
+              <column datatype='string' name='Order No' ordinal='3' />
+              <column datatype='date' name='Sales Date' ordinal='4' />
+              <column datatype='string' name='Store Code' ordinal='5' />
+              <column datatype='integer' name='Pos Seq' ordinal='6' />
+              <column datatype='string' name='Item Code' ordinal='7' />
+              <column datatype='integer' name='Quantity' ordinal='8' />
+              <column datatype='integer' name='Discount' ordinal='9' />
+              <column datatype='integer' name='Amount' ordinal='10' />
+              <column datatype='string' name='Staff Code' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2017).csv' table='[Sample - Local Sales(2017)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='integer' name='Member Code' ordinal='1' />
+              <column datatype='string' name='Channel' ordinal='2' />
+              <column datatype='string' name='Order No' ordinal='3' />
+              <column datatype='date' name='Sales Date' ordinal='4' />
+              <column datatype='string' name='Store Code' ordinal='5' />
+              <column datatype='integer' name='Pos seq' ordinal='6' />
+              <column datatype='string' name='Item Code' ordinal='7' />
+              <column datatype='integer' name='Quantity' ordinal='8' />
+              <column datatype='integer' name='Discount' ordinal='9' />
+              <column datatype='integer' name='Amount' ordinal='10' />
+              <column datatype='string' name='Staff Code' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2018).csv' table='[Sample - Local Sales(2018)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='integer' name='Member Code' ordinal='1' />
+              <column datatype='string' name='Channel' ordinal='2' />
+              <column datatype='string' name='Order No' ordinal='3' />
+              <column datatype='date' name='Sales Date' ordinal='4' />
+              <column datatype='string' name='Store Code' ordinal='5' />
+              <column datatype='integer' name='Pos seq' ordinal='6' />
+              <column datatype='string' name='Item Code' ordinal='7' />
+              <column datatype='integer' name='Quantity' ordinal='8' />
+              <column datatype='integer' name='Discount' ordinal='9' />
+              <column datatype='integer' name='Amount' ordinal='10' />
+              <column datatype='string' name='Staff Code' ordinal='11' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation all='true' name='Sample - Local Sales(2019).csv+' type='union'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' />
+              <column datatype='integer' name='Member Code' />
+              <column datatype='string' name='Channel' />
+              <column datatype='string' name='Order No' />
+              <column datatype='date' name='Sales Date' />
+              <column datatype='string' name='Store Code' />
+              <column datatype='integer' name='Pos seq' />
+              <column datatype='string' name='Item Code' />
+              <column datatype='integer' name='Quantity' />
+              <column datatype='integer' name='Discount' />
+              <column datatype='integer' name='Amount' />
+              <column datatype='string' name='Staff Code' />
+              <column datatype='date' name='Paid Date' />
+              <column datatype='date' name='Deliver Date' />
+              <column datatype='string' name='Table Name' />
+            </columns>
+            <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2019).csv' table='[Sample - Local Sales(2019)#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                <column datatype='integer' name='Seq' ordinal='0' />
+                <column datatype='integer' name='Member Code' ordinal='1' />
+                <column datatype='string' name='Channel' ordinal='2' />
+                <column datatype='string' name='Order No' ordinal='3' />
+                <column datatype='date' name='Sales Date' ordinal='4' />
+                <column datatype='string' name='Store Code' ordinal='5' />
+                <column datatype='integer' name='Pos seq' ordinal='6' />
+                <column datatype='string' name='Item Code' ordinal='7' />
+                <column datatype='integer' name='Quantity' ordinal='8' />
+                <column datatype='integer' name='Discount' ordinal='9' />
+                <column datatype='integer' name='Amount' ordinal='10' />
+                <column datatype='string' name='Staff Code' ordinal='11' />
+              </columns>
+            </relation>
+            <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - e-commerce(All).csv' table='[Sample - e-commerce(All)#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                <column datatype='integer' name='Seq' ordinal='0' />
+                <column datatype='integer' name='Member Code' ordinal='1' />
+                <column datatype='string' name='Channel' ordinal='2' />
+                <column datatype='real' name='Order No' ordinal='3' />
+                <column datatype='date' name='Sales Date' ordinal='4' />
+                <column datatype='date' name='Paid Date' ordinal='5' />
+                <column datatype='date' name='Deliver Date' ordinal='6' />
+                <column datatype='string' name='Store Code' ordinal='7' />
+                <column datatype='integer' name='Pos Seq' ordinal='8' />
+                <column datatype='string' name='Item Code' ordinal='9' />
+                <column datatype='integer' name='Quantity' ordinal='10' />
+                <column datatype='integer' name='Discount' ordinal='11' />
+                <column datatype='integer' name='Amount' ordinal='12' />
+                <column datatype='string' name='Staff Code' ordinal='13' />
+              </columns>
+            </relation>
+            <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Global Sales(All).csv' table='[Sample - Global Sales(All)#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                <column datatype='integer' name='Seq' ordinal='0' />
+                <column datatype='integer' name='Member Code' ordinal='1' />
+                <column datatype='string' name='Channel' ordinal='2' />
+                <column datatype='string' name='Order No' ordinal='3' />
+                <column datatype='date' name='Sales Date' ordinal='4' />
+                <column datatype='string' name='Store Code' ordinal='5' />
+                <column datatype='integer' name='Pos Seq' ordinal='6' />
+                <column datatype='string' name='Item Code' ordinal='7' />
+                <column datatype='integer' name='Quantity' ordinal='8' />
+                <column datatype='integer' name='Discount' ordinal='9' />
+                <column datatype='integer' name='Amount' ordinal='10' />
+                <column datatype='string' name='Staff Code' ordinal='11' />
+              </columns>
+            </relation>
+            <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2017).csv' table='[Sample - Local Sales(2017)#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                <column datatype='integer' name='Seq' ordinal='0' />
+                <column datatype='integer' name='Member Code' ordinal='1' />
+                <column datatype='string' name='Channel' ordinal='2' />
+                <column datatype='string' name='Order No' ordinal='3' />
+                <column datatype='date' name='Sales Date' ordinal='4' />
+                <column datatype='string' name='Store Code' ordinal='5' />
+                <column datatype='integer' name='Pos seq' ordinal='6' />
+                <column datatype='string' name='Item Code' ordinal='7' />
+                <column datatype='integer' name='Quantity' ordinal='8' />
+                <column datatype='integer' name='Discount' ordinal='9' />
+                <column datatype='integer' name='Amount' ordinal='10' />
+                <column datatype='string' name='Staff Code' ordinal='11' />
+              </columns>
+            </relation>
+            <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2018).csv' table='[Sample - Local Sales(2018)#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                <column datatype='integer' name='Seq' ordinal='0' />
+                <column datatype='integer' name='Member Code' ordinal='1' />
+                <column datatype='string' name='Channel' ordinal='2' />
+                <column datatype='string' name='Order No' ordinal='3' />
+                <column datatype='date' name='Sales Date' ordinal='4' />
+                <column datatype='string' name='Store Code' ordinal='5' />
+                <column datatype='integer' name='Pos seq' ordinal='6' />
+                <column datatype='string' name='Item Code' ordinal='7' />
+                <column datatype='integer' name='Quantity' ordinal='8' />
+                <column datatype='integer' name='Discount' ordinal='9' />
+                <column datatype='integer' name='Amount' ordinal='10' />
+                <column datatype='string' name='Staff Code' ordinal='11' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Product Master.csv' table='[Sample - Product Master#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='string' name='Item Code' ordinal='1' />
+              <column datatype='string' name='Company' ordinal='2' />
+              <column datatype='string' name='Brand Code' ordinal='3' />
+              <column datatype='string' name='Brand' ordinal='4' />
+              <column datatype='string' name='Category' ordinal='5' />
+              <column datatype='date' name='Sub-Category' ordinal='6' />
+              <column datatype='string' name='Item Name' ordinal='7' />
+              <column datatype='integer' name='Order Price' ordinal='8' />
+            </columns>
+          </relation>
+          <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Store Master.csv' table='[Sample - Store Master#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+              <column datatype='integer' name='Seq' ordinal='0' />
+              <column datatype='string' name='Channel' ordinal='1' />
+              <column datatype='string' name='Store Code' ordinal='2' />
+              <column datatype='date' name='Region' ordinal='3' />
+              <column datatype='string' name='Country' ordinal='4' />
+              <column datatype='string' name='State' ordinal='5' />
+              <column datatype='string' name='City' ordinal='6' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[Amount]' value='[Sample - Local Sales(2019).csv+].[Amount]' />
+          <map key='[Brand Code]' value='[Sample - Product Master.csv].[Brand Code]' />
+          <map key='[Brand]' value='[Sample - Product Master.csv].[Brand]' />
+          <map key='[Category]' value='[Sample - Product Master.csv].[Category]' />
+          <map key='[Channel (Sample - Store Master.csv)]' value='[Sample - Store Master.csv].[Channel]' />
+          <map key='[Channel]' value='[Sample - Local Sales(2019).csv+].[Channel]' />
+          <map key='[City]' value='[Sample - Store Master.csv].[City]' />
+          <map key='[Company]' value='[Sample - Product Master.csv].[Company]' />
+          <map key='[Country]' value='[Sample - Store Master.csv].[Country]' />
+          <map key='[Deliver Date]' value='[Sample - Local Sales(2019).csv+].[Deliver Date]' />
+          <map key='[Discount]' value='[Sample - Local Sales(2019).csv+].[Discount]' />
+          <map key='[Item Code (Sample - Product Master.csv)]' value='[Sample - Product Master.csv].[Item Code]' />
+          <map key='[Item Code]' value='[Sample - Local Sales(2019).csv+].[Item Code]' />
+          <map key='[Item Name]' value='[Sample - Product Master.csv].[Item Name]' />
+          <map key='[Member Code]' value='[Sample - Local Sales(2019).csv+].[Member Code]' />
+          <map key='[Order No]' value='[Sample - Local Sales(2019).csv+].[Order No]' />
+          <map key='[Order Price]' value='[Sample - Product Master.csv].[Order Price]' />
+          <map key='[Paid Date]' value='[Sample - Local Sales(2019).csv+].[Paid Date]' />
+          <map key='[Pos seq]' value='[Sample - Local Sales(2019).csv+].[Pos seq]' />
+          <map key='[Quantity]' value='[Sample - Local Sales(2019).csv+].[Quantity]' />
+          <map key='[Region]' value='[Sample - Store Master.csv].[Region]' />
+          <map key='[Sales Date]' value='[Sample - Local Sales(2019).csv+].[Sales Date]' />
+          <map key='[Seq (Sample - Product Master.csv)]' value='[Sample - Product Master.csv].[Seq]' />
+          <map key='[Seq (Sample - Store Master.csv)]' value='[Sample - Store Master.csv].[Seq]' />
+          <map key='[Seq]' value='[Sample - Local Sales(2019).csv+].[Seq]' />
+          <map key='[Staff Code]' value='[Sample - Local Sales(2019).csv+].[Staff Code]' />
+          <map key='[State]' value='[Sample - Store Master.csv].[State]' />
+          <map key='[Store Code (Sample - Store Master.csv)]' value='[Sample - Store Master.csv].[Store Code]' />
+          <map key='[Store Code]' value='[Sample - Local Sales(2019).csv+].[Store Code]' />
+          <map key='[Sub-Category]' value='[Sample - Product Master.csv].[Sub-Category]' />
+          <map key='[Table Name]' value='[Sample - Local Sales(2019).csv+].[Table Name]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ko&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₩&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ko_KR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ko&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₩&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ko_KR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Seq</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Seq]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Seq</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Member Code</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Member Code]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Member Code</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Channel]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Channel</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order No</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Order No]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Order No</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Sales Date]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Sales Date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Store Code]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Store Code</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Pos seq</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Pos seq]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Pos seq</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Item Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Item Code]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Item Code</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Quantity</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Quantity]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Quantity</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Discount</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Discount]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Discount</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Amount</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Amount]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Amount</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Staff Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Staff Code]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Staff Code</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Paid Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Paid Date]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Paid Date</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Deliver Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Deliver Date]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Deliver Date</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Table Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Table Name]</local-name>
+            <parent-name>[Sample - Local Sales(2019).csv+]</parent-name>
+            <remote-alias>Table Name</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Seq</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Seq (Sample - Product Master.csv)]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Seq</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Item Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Item Code (Sample - Product Master.csv)]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Item Code</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Company</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Company]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Company</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Brand Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Brand Code]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Brand Code</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Brand</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Brand]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Brand</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Category]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Category</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sub-Category</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Sub-Category]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Sub-Category</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Item Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Item Name]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Item Name</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Price</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Order Price]</local-name>
+            <parent-name>[Sample - Product Master.csv]</parent-name>
+            <remote-alias>Order Price</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Seq</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Seq (Sample - Store Master.csv)]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>Seq</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Channel (Sample - Store Master.csv)]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>Channel</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Store Code (Sample - Store Master.csv)]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>Store Code</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Region</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Region]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>Region</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>State</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[State]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>State</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[City]</local-name>
+            <parent-name>[Sample - Store Master.csv]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LKO_RKR' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]&quot;' value='구매자 수' />
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]&quot;' value='구매 건수' />
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]&quot;' value='매출' />
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]&quot;' value='구매 수량' />
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476526594:qk]&quot;' value='객단가' />
+          <alias key='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476604420:qk]&quot;' value='건단가' />
+        </aliases>
+      </column>
+      <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+      <column caption='누적 매출' datatype='integer' name='[Calculation_1280429676476076032]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Channel]: SUM([Amount])}' />
+      </column>
+      <column caption='일별 매출목표달성 KPI' datatype='string' name='[Calculation_1280429676490936325]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='IF [Parameters].[매개 변수 1] &lt; SUM([Amount]) THEN &apos;목표달성&apos; ELSE &apos;미달성&apos; END' />
+      </column>
+      <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+      <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+      <column datatype='string' name='[Order No]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Quantity]' role='measure' type='quantitative' />
+      <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Sample - Local Sales(2019).csv' datatype='table' name='[__tableau_internal_object_id__].[Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Sample - Product Master.csv' datatype='table' name='[__tableau_internal_object_id__].[Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Sample - Store Master.csv' datatype='table' name='[__tableau_internal_object_id__].[Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA]' role='measure' type='quantitative' />
+      <column caption='월별 매출목표달성 KPI' datatype='string' name='[일별 매출목표달성 KPI(복사본)_1280429676492259336]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='IF [Parameters].[일별 매출 목표(복사본)_1280429676492009479] &lt; SUM([Amount]) THEN &apos;목표달성&apos; ELSE &apos;미달성&apos; END' />
+      </column>
+      <column-instance column='[Member Code]' derivation='CountD' name='[ctd:Member Code:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Order No]' derivation='CountD' name='[ctd:Order No:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Quantity]' derivation='Sum' name='[sum:Quantity:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1280429676490936325]' derivation='User' name='[usr:Calculation_1280429676490936325:nk]' pivot='key' type='nominal' />
+      <column-instance column='[일별 매출목표달성 KPI(복사본)_1280429676492259336]' derivation='User' name='[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]' pivot='key' type='nominal' />
+      <drill-paths>
+        <drill-path name='Country, State, City'>
+          <field>[Country]</field>
+          <field>[State]</field>
+          <field>[City]</field>
+        </drill-path>
+      </drill-paths>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[usr:Calculation_1280429676490936325:nk]' type='palette'>
+            <map to='#2a5783'>
+              <bucket>&quot;목표달성&quot;</bucket>
+            </map>
+            <map to='#bcbfbe'>
+              <bucket>&quot;미달성&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;목표달성&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;미달성&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]&quot;</bucket>
+            </map>
+            <map to='#ffffff'>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Channel:nk]' type='palette'>
+            <map to='#67737c'>
+              <bucket>%all%</bucket>
+            </map>
+            <map to='#848e93'>
+              <bucket>&quot;Global&quot;</bucket>
+            </map>
+            <map to='#d5d5d5'>
+              <bucket>&quot;E-comm&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Local&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;대한민국&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='일별 매출 목표' datatype='real' name='[매개 변수 1]' param-domain-type='any' role='measure' type='quantitative' value='2000000.'>
+          <calculation class='tableau' formula='2000000.' />
+        </column>
+        <column caption='월별 매출 목표' datatype='real' name='[일별 매출 목표(복사본)_1280429676492009479]' param-domain-type='any' role='measure' type='quantitative' value='30000000.'>
+          <calculation class='tableau' formula='30000000.' />
+        </column>
+      </datasource-dependencies>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Sample - Local Sales(2019).csv' id='Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9'>
+            <properties context=''>
+              <relation all='true' name='Sample - Local Sales(2019).csv+' type='union'>
+                <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                  <column datatype='integer' name='Seq' />
+                  <column datatype='integer' name='Member Code' />
+                  <column datatype='string' name='Channel' />
+                  <column datatype='string' name='Order No' />
+                  <column datatype='date' name='Sales Date' />
+                  <column datatype='string' name='Store Code' />
+                  <column datatype='integer' name='Pos seq' />
+                  <column datatype='string' name='Item Code' />
+                  <column datatype='integer' name='Quantity' />
+                  <column datatype='integer' name='Discount' />
+                  <column datatype='integer' name='Amount' />
+                  <column datatype='string' name='Staff Code' />
+                  <column datatype='date' name='Paid Date' />
+                  <column datatype='date' name='Deliver Date' />
+                  <column datatype='string' name='Table Name' />
+                </columns>
+                <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2019).csv' table='[Sample - Local Sales(2019)#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                    <column datatype='integer' name='Seq' ordinal='0' />
+                    <column datatype='integer' name='Member Code' ordinal='1' />
+                    <column datatype='string' name='Channel' ordinal='2' />
+                    <column datatype='string' name='Order No' ordinal='3' />
+                    <column datatype='date' name='Sales Date' ordinal='4' />
+                    <column datatype='string' name='Store Code' ordinal='5' />
+                    <column datatype='integer' name='Pos seq' ordinal='6' />
+                    <column datatype='string' name='Item Code' ordinal='7' />
+                    <column datatype='integer' name='Quantity' ordinal='8' />
+                    <column datatype='integer' name='Discount' ordinal='9' />
+                    <column datatype='integer' name='Amount' ordinal='10' />
+                    <column datatype='string' name='Staff Code' ordinal='11' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - e-commerce(All).csv' table='[Sample - e-commerce(All)#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                    <column datatype='integer' name='Seq' ordinal='0' />
+                    <column datatype='integer' name='Member Code' ordinal='1' />
+                    <column datatype='string' name='Channel' ordinal='2' />
+                    <column datatype='real' name='Order No' ordinal='3' />
+                    <column datatype='date' name='Sales Date' ordinal='4' />
+                    <column datatype='date' name='Paid Date' ordinal='5' />
+                    <column datatype='date' name='Deliver Date' ordinal='6' />
+                    <column datatype='string' name='Store Code' ordinal='7' />
+                    <column datatype='integer' name='Pos Seq' ordinal='8' />
+                    <column datatype='string' name='Item Code' ordinal='9' />
+                    <column datatype='integer' name='Quantity' ordinal='10' />
+                    <column datatype='integer' name='Discount' ordinal='11' />
+                    <column datatype='integer' name='Amount' ordinal='12' />
+                    <column datatype='string' name='Staff Code' ordinal='13' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Global Sales(All).csv' table='[Sample - Global Sales(All)#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                    <column datatype='integer' name='Seq' ordinal='0' />
+                    <column datatype='integer' name='Member Code' ordinal='1' />
+                    <column datatype='string' name='Channel' ordinal='2' />
+                    <column datatype='string' name='Order No' ordinal='3' />
+                    <column datatype='date' name='Sales Date' ordinal='4' />
+                    <column datatype='string' name='Store Code' ordinal='5' />
+                    <column datatype='integer' name='Pos Seq' ordinal='6' />
+                    <column datatype='string' name='Item Code' ordinal='7' />
+                    <column datatype='integer' name='Quantity' ordinal='8' />
+                    <column datatype='integer' name='Discount' ordinal='9' />
+                    <column datatype='integer' name='Amount' ordinal='10' />
+                    <column datatype='string' name='Staff Code' ordinal='11' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2017).csv' table='[Sample - Local Sales(2017)#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                    <column datatype='integer' name='Seq' ordinal='0' />
+                    <column datatype='integer' name='Member Code' ordinal='1' />
+                    <column datatype='string' name='Channel' ordinal='2' />
+                    <column datatype='string' name='Order No' ordinal='3' />
+                    <column datatype='date' name='Sales Date' ordinal='4' />
+                    <column datatype='string' name='Store Code' ordinal='5' />
+                    <column datatype='integer' name='Pos seq' ordinal='6' />
+                    <column datatype='string' name='Item Code' ordinal='7' />
+                    <column datatype='integer' name='Quantity' ordinal='8' />
+                    <column datatype='integer' name='Discount' ordinal='9' />
+                    <column datatype='integer' name='Amount' ordinal='10' />
+                    <column datatype='string' name='Staff Code' ordinal='11' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Local Sales(2018).csv' table='[Sample - Local Sales(2018)#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                    <column datatype='integer' name='Seq' ordinal='0' />
+                    <column datatype='integer' name='Member Code' ordinal='1' />
+                    <column datatype='string' name='Channel' ordinal='2' />
+                    <column datatype='string' name='Order No' ordinal='3' />
+                    <column datatype='date' name='Sales Date' ordinal='4' />
+                    <column datatype='string' name='Store Code' ordinal='5' />
+                    <column datatype='integer' name='Pos seq' ordinal='6' />
+                    <column datatype='string' name='Item Code' ordinal='7' />
+                    <column datatype='integer' name='Quantity' ordinal='8' />
+                    <column datatype='integer' name='Discount' ordinal='9' />
+                    <column datatype='integer' name='Amount' ordinal='10' />
+                    <column datatype='string' name='Staff Code' ordinal='11' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+          <object caption='Sample - Product Master.csv' id='Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0'>
+            <properties context=''>
+              <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Product Master.csv' table='[Sample - Product Master#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                  <column datatype='integer' name='Seq' ordinal='0' />
+                  <column datatype='string' name='Item Code' ordinal='1' />
+                  <column datatype='string' name='Company' ordinal='2' />
+                  <column datatype='string' name='Brand Code' ordinal='3' />
+                  <column datatype='string' name='Brand' ordinal='4' />
+                  <column datatype='string' name='Category' ordinal='5' />
+                  <column datatype='date' name='Sub-Category' ordinal='6' />
+                  <column datatype='string' name='Item Name' ordinal='7' />
+                  <column datatype='integer' name='Order Price' ordinal='8' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='Sample - Store Master.csv' id='Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA'>
+            <properties context=''>
+              <relation connection='textscan.16pho7d17lg6d217nvhhy1akax87' name='Sample - Store Master.csv' table='[Sample - Store Master#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='ko_KR' separator=','>
+                  <column datatype='integer' name='Seq' ordinal='0' />
+                  <column datatype='string' name='Channel' ordinal='1' />
+                  <column datatype='string' name='Store Code' ordinal='2' />
+                  <column datatype='date' name='Region' ordinal='3' />
+                  <column datatype='string' name='Country' ordinal='4' />
+                  <column datatype='string' name='State' ordinal='5' />
+                  <column datatype='string' name='City' ordinal='6' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Item Code]' />
+              <expression op='[Item Code (Sample - Product Master.csv)]' />
+            </expression>
+            <first-end-point object-id='Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9' />
+            <second-end-point object-id='Sample - Product Master.csv_50A3BA8C04B74F1294D37AB29B2247F0' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Store Code]' />
+              <expression op='[Store Code (Sample - Store Master.csv)]' />
+            </expression>
+            <first-end-point object-id='Sample - Local Sales(2019).csv_40297147CDB147569D64162F3AD81BC9' />
+            <second-end-point object-id='Sample - Store Master.csv_D5D2B6C99BBA452DA2D31F1955BD5DBA' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='브랜드별 매출 실적'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Brand]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column-instance column='[Brand]' derivation='None' name='[none:Brand:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' direction='DESC' using='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' />
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Brand:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' value='*#,##0,,백만원;-#,##0,,백만원' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows onTop='true' total='true'>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</rows>
+        <cols>([federated.0hcrxkj009syhx171p1u20a8rt00].[none:Brand:nk] * [federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk])</cols>
+      </table>
+      <simple-id uuid='{9DB10937-D64E-40CE-9727-A15EED421BA9}' />
+    </worksheet>
+    <worksheet name='월별 매출현황'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+            <datasource caption='매개 변수' name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='월별 매출 목표' datatype='real' name='[일별 매출 목표(복사본)_1280429676492009479]' param-domain-type='any' role='measure' type='quantitative' value='30000000.'>
+              <calculation class='tableau' formula='30000000.' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Sales Date]' derivation='Month-Trunc' name='[tmn:Sales Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[일별 매출목표달성 KPI(복사본)_1280429676492259336]' derivation='User' name='[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Date]' derivation='Year' name='[yr:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column caption='월별 매출목표달성 KPI' datatype='string' name='[일별 매출목표달성 KPI(복사본)_1280429676492259336]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='IF [Parameters].[일별 매출 목표(복사본)_1280429676492009479] &lt; SUM([Amount]) THEN &apos;목표달성&apos; ELSE &apos;미달성&apos; END' />
+            </column>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[yr:Sales Date:ok]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[yr:Sales Date:ok]' member='2018' />
+              <groupfilter function='member' level='[yr:Sales Date:ok]' member='2019' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0hcrxkj009syhx171p1u20a8rt00].[yr:Sales Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[tmn:Sales Date:qk]' value='*MM.DD' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' id='refline0' value='on' />
+            <format attr='line-pattern-only' id='refline0' value='dashed' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' enable-instant-analytics='true' formula='average' id='refline0' label='매출 목표: &lt;Value&gt;' label-type='custom' probability='95' scope='per-pane' value-column='[Parameters].[일별 매출 목표(복사본)_1280429676492009479]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2083977460861206' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]</rows>
+        <cols>[federated.0hcrxkj009syhx171p1u20a8rt00].[tmn:Sales Date:qk]</cols>
+      </table>
+      <simple-id uuid='{37E3F368-B8E0-499E-B0A5-7DE525A210D0}' />
+    </worksheet>
+    <worksheet name='일별 매출 누계'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[cum:sum:Amount:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Date]' derivation='Day-Trunc' name='[tdy:Sales Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              <groupfilter function='member' level='[my:Sales Date:ok]' member='201912' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[cum:sum:Amount:qk]' value='*#,##0,백만원;-#,##0,백만원' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]' value='*' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]' value='*MM.DD' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' id='refline0' value='on' />
+            <format attr='line-pattern-only' id='refline0' value='dashed' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[cum:sum:Amount:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2083977460861206' />
+                <format attr='mark-labels-mode' value='line-ends' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-line-first' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0hcrxkj009syhx171p1u20a8rt00].[cum:sum:Amount:qk]</rows>
+        <cols>[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]</cols>
+      </table>
+      <simple-id uuid='{5A59E934-6FC3-43D4-B1BE-624172F18BD2}' />
+    </worksheet>
+    <worksheet name='일별 매출현황'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+            <datasource caption='매개 변수' name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='일별 매출 목표' datatype='real' name='[매개 변수 1]' param-domain-type='any' role='measure' type='quantitative' value='2000000.'>
+              <calculation class='tableau' formula='2000000.' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column caption='일별 매출목표달성 KPI' datatype='string' name='[Calculation_1280429676490936325]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='IF [Parameters].[매개 변수 1] &lt; SUM([Amount]) THEN &apos;목표달성&apos; ELSE &apos;미달성&apos; END' />
+            </column>
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Sales Date]' derivation='Day-Trunc' name='[tdy:Sales Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676490936325]' derivation='User' name='[usr:Calculation_1280429676490936325:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              <groupfilter function='member' level='[my:Sales Date:ok]' member='201912' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]' value='*M.DD' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' id='refline0' value='on' />
+            <format attr='line-pattern-only' id='refline0' value='dashed' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676490936325:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' enable-instant-analytics='true' formula='average' id='refline0' label='매출 목표: &lt;Value&gt;' label-type='custom' probability='95' scope='per-pane' value-column='[Parameters].[매개 변수 1]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2083977460861206' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]</rows>
+        <cols>[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]</cols>
+      </table>
+      <simple-id uuid='{F3E4D2DC-30F9-4A46-B2C7-5466A329CF9B}' />
+    </worksheet>
+    <worksheet name='채널별 구매건수 비중'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494200843]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494221325]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Order No]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Order No]' derivation='CountD' name='[ctd:Order No:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Order No]' derivation='CountD' name='[pcdf:ctd:Order No:qk:2]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Columns' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Order No]' derivation='CountD' name='[pcto:ctd:Order No:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Calculation_1280429676494200843]' derivation='Sum' name='[sum:Calculation_1280429676494200843:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676494221325]' derivation='Sum' name='[sum:Calculation_1280429676494221325:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[my:Sales Date:ok]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201701' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201702' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201703' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201704' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201705' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201706' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201707' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201708' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201709' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201710' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201711' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201712' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201801' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201802' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201803' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201804' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201805' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201806' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201807' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201808' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201809' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201810' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201811' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201812' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201901' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201902' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201903' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201904' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201905' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201906' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201907' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201908' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201909' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201910' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:ctd:Order No:qk:2]' value='*▲0.0%;▼0.0%' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:ctd:Order No:qk]' value='p0.00%' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]' value='*#,##0건;-#,##0건' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' value='false' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <wedge-size column='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:ctd:Order No:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.8570718765258789' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:ctd:Order No:qk:2]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok] * ([federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk] + [federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]))</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{7B47BD59-85DF-4552-A2BE-54B19356DCD6}' />
+    </worksheet>
+    <worksheet name='채널별 구매수량 비중'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494200843]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494221325]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Quantity]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Quantity]' derivation='Sum' name='[pcdf:sum:Quantity:qk:2]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Columns' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Quantity]' derivation='Sum' name='[pcto:sum:Quantity:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Calculation_1280429676494200843]' derivation='Sum' name='[sum:Calculation_1280429676494200843:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676494221325]' derivation='Sum' name='[sum:Calculation_1280429676494221325:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Quantity]' derivation='Sum' name='[sum:Quantity:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[my:Sales Date:ok]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201701' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201702' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201703' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201704' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201705' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201706' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201707' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201708' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201709' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201710' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201711' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201712' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201801' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201802' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201803' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201804' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201805' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201806' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201807' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201808' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201809' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201810' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201811' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201812' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201901' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201902' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201903' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201904' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201905' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201906' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201907' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201908' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201909' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201910' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]' value='*#,##0건;-#,##0건' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:sum:Quantity:qk]' value='p0.00%' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:sum:Quantity:qk:2]' value='*▲0.0%;▼0.0%' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' value='false' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <wedge-size column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:sum:Quantity:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.8570718765258789' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:sum:Quantity:qk:2]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok] * ([federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk] + [federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]))</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{369385DD-BAF9-443D-86EF-DBE7F297DECE}' />
+    </worksheet>
+    <worksheet name='채널별 구매자 비중'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494200843]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494221325]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Member Code]' derivation='CountD' name='[ctd:Member Code:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Member Code]' derivation='CountD' name='[pcdf:ctd:Member Code:qk:2]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Columns' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Member Code]' derivation='CountD' name='[pcto:ctd:Member Code:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Calculation_1280429676494200843]' derivation='Sum' name='[sum:Calculation_1280429676494200843:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676494221325]' derivation='Sum' name='[sum:Calculation_1280429676494221325:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[my:Sales Date:ok]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201701' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201702' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201703' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201704' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201705' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201706' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201707' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201708' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201709' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201710' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201711' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201712' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201801' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201802' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201803' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201804' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201805' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201806' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201807' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201808' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201809' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201810' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201811' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201812' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201901' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201902' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201903' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201904' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201905' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201906' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201907' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201908' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201909' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201910' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:ctd:Member Code:qk]' value='p0.00%' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:ctd:Member Code:qk:2]' value='*▲0.0%;▼0.0%' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]' value='*#,##0명;-#,##0명' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' value='false' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <wedge-size column='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:ctd:Member Code:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.8570718765258789' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:ctd:Member Code:qk:2]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok] * ([federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk] + [federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]))</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{ABFD372B-B489-4D64-9F84-576CFF23F6DD}' />
+    </worksheet>
+    <worksheet name='채널별 매출 비중'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494200843]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column caption='0' datatype='integer' name='[Calculation_1280429676494221325]' role='measure' type='quantitative' user:unnamed='채널별 매출 비용'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Sales Date]' derivation='MY' name='[my:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[pcdf:sum:Amount:qk:3]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Columns' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Amount]' derivation='Sum' name='[pcto:sum:Amount:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676494200843]' derivation='Sum' name='[sum:Calculation_1280429676494200843:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676494221325]' derivation='Sum' name='[sum:Calculation_1280429676494221325:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[my:Sales Date:ok]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201701' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201702' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201703' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201704' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201705' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201706' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201707' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201708' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201709' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201710' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201711' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201712' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201801' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201802' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201803' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201804' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201805' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201806' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201807' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201808' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201809' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201810' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201811' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201812' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201901' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201902' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201903' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201904' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201905' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201906' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201907' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201908' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201909' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201910' />
+                <groupfilter function='member' level='[my:Sales Date:ok]' member='201911' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:sum:Amount:qk:3]' value='*▲0.0%;▽0.0%;' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' value='*#,##0,,백만원;-#,##0,,백만원' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]' value='false' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <wedge-size column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcto:sum:Amount:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.8570718765258789' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' />
+              <text column='[federated.0hcrxkj009syhx171p1u20a8rt00].[pcdf:sum:Amount:qk:3]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok] * ([federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494200843:qk] + [federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676494221325:qk]))</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{0F39E6DD-D88D-43FE-A781-208985668F25}' />
+    </worksheet>
+    <worksheet name='채널별 주요 실적'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='전사실적 대시보드 데이터' name='federated.0hcrxkj009syhx171p1u20a8rt00' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hcrxkj009syhx171p1u20a8rt00'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column caption='누적 매출' datatype='integer' name='[Calculation_1280429676476076032]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{ FIXED [Channel]: SUM([Amount])}' />
+            </column>
+            <column caption='SUM([Sales])/COUNTD([Member Code])' datatype='real' name='[Calculation_1280429676476526594]' role='measure' type='quantitative' user:unnamed='채널별 주요 실적'>
+              <calculation class='tableau' formula='SUM([Amount])/COUNTD([Member Code])' />
+            </column>
+            <column caption='SUM([Sales])/COUNTD([Order No])' datatype='real' name='[Calculation_1280429676476604420]' role='measure' type='quantitative' user:unnamed='채널별 주요 실적'>
+              <calculation class='tableau' formula='SUM([Amount])/COUNTD([Order No])' />
+            </column>
+            <column datatype='string' name='[Channel]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Order No]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Quantity]' role='measure' type='quantitative' />
+            <column-instance column='[Member Code]' derivation='CountD' name='[ctd:Member Code:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Order No]' derivation='CountD' name='[ctd:Order No:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Channel]' derivation='None' name='[none:Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676476076032]' derivation='Sum' name='[sum:Calculation_1280429676476076032:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Quantity]' derivation='Sum' name='[sum:Quantity:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676476526594]' derivation='User' name='[usr:Calculation_1280429676476526594:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1280429676476604420]' derivation='User' name='[usr:Calculation_1280429676476604420:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676476076032:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476526594:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476604420:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676476076032:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476526594:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476604420:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <computed-sort column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' direction='DESC' using='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' />
+          <slices>
+            <column>[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[Multiple Values]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Calculation_1280429676476076032:qk]' value='*#,##0,,백만원;-#,##0,,백만원' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Amount:qk]' value='*#,##0,,백만원;-#,##0,,백만원' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Member Code:qk]' value='*#,##0&quot;명&quot;;-#,##0&quot;명&quot;' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[ctd:Order No:qk]' value='n#,##0&quot;건&quot;;-#,##0&quot;건&quot;' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[sum:Quantity:qk]' value='n#,##0&quot;개&quot;;-#,##0&quot;개&quot;' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476526594:qk]' value='n#,##0&quot;원&quot;;-#,##0&quot;원&quot;' />
+            <format attr='text-format' field='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676476604420:qk]' value='n#,##0&quot;원&quot;;-#,##0&quot;원&quot;' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows onTop='true' total='true'>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</rows>
+        <cols>([federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names] * [federated.0hcrxkj009syhx171p1u20a8rt00].[Multiple Values])</cols>
+      </table>
+      <simple-id uuid='{12AA28DE-BBFD-481E-BBE2-7ABB7E2248C3}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='대시보드 1'>
+      <style />
+      <size maxheight='900' maxwidth='1600' minheight='900' minwidth='1600' preset-index='8' sizing-mode='fixed' />
+      <zones />
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98222' id='3' param='vert' w='99000' x='500' y='889' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{312C2ACA-3BEE-47D3-B3F7-637D3EAFAC2E}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='채널별 주요 실적'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{D7224F7D-4B60-4A24-B494-CCF99F4AE718}' />
+    </window>
+    <window class='worksheet' name='브랜드별 매출 실적'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Brand:nk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1651477D-FF70-4CC5-B5BE-45FBDE59E89C}' />
+    </window>
+    <window class='worksheet' name='일별 매출현황'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='type_in' param='[Parameters].[매개 변수 1]' type='parameter' />
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676490936325:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:Calculation_1280429676490936325:nk]</field>
+          </color-one-way>
+        </highlight>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{D8A1F07B-4C2D-4E44-8AAE-D4E06DB8ECAC}' />
+    </window>
+    <window class='worksheet' name='월별 매출현황'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]' type='color' />
+            <card mode='type_in' param='[Parameters].[일별 매출 목표(복사본)_1280429676492009479]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <selection-collection>
+          <node-selection select-tuples='false'>
+            <oriented-node-reference orientation='horizontal'>
+              <node-reference>
+                <axis>[federated.0hcrxkj009syhx171p1u20a8rt00].[tmn:Sales Date:qk]</axis>
+              </node-reference>
+              <page-reference />
+            </oriented-node-reference>
+          </node-selection>
+        </selection-collection>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]</field>
+          </color-one-way>
+        </highlight>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{D40EC8D6-9853-4656-96D7-AB6A3E7F7014}' />
+    </window>
+    <window class='worksheet' name='일별 매출 누계'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[tdy:Sales Date:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[usr:일별 매출목표달성 KPI(복사본)_1280429676492259336:nk]</field>
+          </color-one-way>
+        </highlight>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{02C4EA64-C99A-44D9-95A7-B661A637B4EF}' />
+    </window>
+    <window class='worksheet' name='채널별 매출 비중'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' type='color' />
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{8C00F83A-2CD0-4D0D-985D-2E75FE62CBDD}' />
+    </window>
+    <window class='worksheet' name='채널별 구매자 비중'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' type='color' />
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506169360:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506222610:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Member Code:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{B098CD5F-6787-4829-B776-3206FC24443E}' />
+    </window>
+    <window class='worksheet' name='채널별 구매건수 비중'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' type='color' />
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506169360:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506222610:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Member Code:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{02799CC7-E408-4868-BC37-360A8BC0E520}' />
+    </window>
+    <window class='worksheet' name='채널별 구매수량 비중'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[:Measure Names]' type='color' />
+            <card pane-specification-id='1' param='[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[my:Sales Date:ok]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506169360:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676506222610:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Calculation_1280429676508332052:qk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Channel:nk]</field>
+            <field>[federated.0hcrxkj009syhx171p1u20a8rt00].[none:Member Code:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1B5184D8-4F10-43FE-9B4B-22E5FD4FC72F}' />
+    </window>
+    <window class='dashboard' maximized='true' name='대시보드 1'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{CD904CE5-F3D9-4452-AA3E-ACCC4D55253F}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='대시보드 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='104' name='브랜드별 매출 실적' width='192'>
+      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
+      AAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='월별 매출현황' width='192'>
+      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
+      RU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='일별 매출 누계' width='192'>
+      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
+      TkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='일별 매출현황' width='192'>
+      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
+      AAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='채널별 구매건수 비중' width='164'>
+      iVBORw0KGgoAAAANSUhEUgAAAKQAAADACAYAAACK0MgNAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFklEQVR4nO3SMQEAIAzAMMC/5/HigB6Jgh7dMzMLIs7vAHgZkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTF
+      kKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJ
+      iiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQY
+      khRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJ
+      MSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRD
+      kmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQpF0ib
+      BXwujAnjAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='채널별 구매수량 비중' width='164'>
+      iVBORw0KGgoAAAANSUhEUgAAAKQAAADACAYAAACK0MgNAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFklEQVR4nO3SMQEAIAzAMMC/5/HigB6Jgh7dMzMLIs7vAHgZkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTF
+      kKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJ
+      iiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQY
+      khRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJ
+      MSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRD
+      kmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQpF0ib
+      BXwujAnjAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='채널별 구매자 비중' width='164'>
+      iVBORw0KGgoAAAANSUhEUgAAAKQAAADACAYAAACK0MgNAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFklEQVR4nO3SMQEAIAzAMMC/5/HigB6Jgh7dMzMLIs7vAHgZkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTF
+      kKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJ
+      iiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQY
+      khRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJ
+      MSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRD
+      kmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQpF0ib
+      BXwujAnjAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='채널별 매출 비중' width='164'>
+      iVBORw0KGgoAAAANSUhEUgAAAKQAAADACAYAAACK0MgNAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFklEQVR4nO3SMQEAIAzAMMC/5/HigB6Jgh7dMzMLIs7vAHgZkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTF
+      kKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJ
+      iiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQY
+      khRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJ
+      MSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRD
+      kmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQp
+      hiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJI
+      UgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQphiTFkKQYkhRDkmJIUgxJiiFJMSQpF0ib
+      BXwujAnjAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='104' name='채널별 주요 실적' width='192'>
+      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
+      AAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
