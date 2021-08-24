@@ -1,5 +1,5 @@
 * [태블로 버전 히스토리](https://www.tableau.com/ko-kr/products/all-features)  
-  * 스터디 버전: Tableau Desktop 2020.2.16(14일)  
+  * 스터디 버전: Tableau Desktop 2020.2.16, Tableau Desktop 2021.2.1
 ---
 * ch_01.pdf
 > 데이터 연결, BAR/LINE/AREA/PIE/비율 바 차트, 산점도, 박스플랏, 히스토그램, 하이라이트 테이블, 트리맵, 버블 차트   
