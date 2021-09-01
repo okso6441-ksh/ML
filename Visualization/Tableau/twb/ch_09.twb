@@ -1238,6 +1238,15 @@
       <column caption='기준날짜필터(가입일기준1년)' datatype='boolean' name='[Calculation_1162773141148614671]' role='dimension' type='nominal'>
         <calculation class='tableau' formula='if DATETRUNC(&apos;month&apos;,[join date]) &lt;= DATETRUNC(&apos;month&apos;,[Parameters].[매개 변수 1])&#13;&#10;and DATETRUNC(&apos;month&apos;,[join date]) &gt; DATETRUNC(&apos;month&apos;,DATEADD(&apos;year&apos;,-1,[Parameters].[매개 변수 1])) then true&#13;&#10;else false&#13;&#10;end' />
       </column>
+      <column caption='회원의  최초구매일' datatype='boolean' name='[Calculation_1251437759021408256]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='DATETRUNC(&apos;month&apos;,[Sales Date]) = DATETRUNC(&apos;month&apos;,[join date])' />
+      </column>
+      <column caption='신규구매자 수' datatype='integer' name='[Calculation_1251437759021572097]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD(IF [Calculation_1251437759021408256] THEN [Member Code] END)' />
+      </column>
+      <column caption='구매자 수(2회 이상)' datatype='integer' name='[Calculation_1251437759024893954]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD(IF { FIXED [기준날짜필터(6개월)(복사본)_1162773141166514192], DATETRUNC(&apos;month&apos;, [Sales Date]), [Member Code] : COUNTD([Order No])} &gt; 1 THEN [Member Code] END)' />
+      </column>
       <column caption='회원여부' datatype='string' name='[Calculation_1571756281972162562]' role='dimension' type='nominal'>
         <calculation class='tableau' formula='IF ISNULL([Member Code]) = FALSE THEN &apos;회원&apos; ELSE &apos;비회원&apos; END' />
       </column>
@@ -1400,6 +1409,8 @@
       <column-instance column='[Calculation_1162773141074743305]' derivation='User' name='[usr:Calculation_1162773141074743305:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1162773141076049930]' derivation='User' name='[usr:Calculation_1162773141076049930:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1162773141141536780]' derivation='User' name='[usr:Calculation_1162773141141536780:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1251437759021572097]' derivation='User' name='[usr:Calculation_1251437759021572097:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1251437759024893954]' derivation='User' name='[usr:Calculation_1251437759024893954:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1571756281975169027]' derivation='User' name='[usr:Calculation_1571756281975169027:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_2165949957667659779]' derivation='User' name='[usr:Calculation_2165949957667659779:qk]' pivot='key' type='quantitative'>
         <table-calc ordering-type='Rows' />
@@ -1432,6 +1443,12 @@
           <encoding attr='color' field='[:Measure Names]' type='palette'>
             <map to='#2680ff'>
               <bucket>&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141018902535:qk]&quot;</bucket>
+            </map>
+            <map to='#2680ff'>
+              <bucket>&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759021572097:qk]&quot;</bucket>
+            </map>
+            <map to='#2680ff'>
+              <bucket>&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk]&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_2165949957667659779:qk]&quot;</bucket>
@@ -1509,6 +1526,17 @@
               <bucket>&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1571756281984770063:qk]&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[none:Calculation_1571756281981804554:nk]' type='palette'>
+            <map to='#2680ff'>
+              <bucket>&quot;신규&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;기존&quot;</bucket>
+            </map>
+            <map to='#d5d5d5'>
+              <bucket>&quot;구매 후 가입 &quot;</bucket>
+            </map>
+          </encoding>
           <encoding attr='color' field='[none:AdhocCluster:1:ok]' type='palette'>
             <map to='#1f8ad8'>
               <bucket>2</bucket>
@@ -1521,17 +1549,6 @@
             </map>
             <map to='#fee2e1'>
               <bucket>4</bucket>
-            </map>
-          </encoding>
-          <encoding attr='color' field='[none:Calculation_1571756281981804554:nk]' type='palette'>
-            <map to='#2680ff'>
-              <bucket>&quot;신규&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;기존&quot;</bucket>
-            </map>
-            <map to='#d5d5d5'>
-              <bucket>&quot;구매 후 가입 &quot;</bucket>
             </map>
           </encoding>
         </style-rule>
@@ -5798,9 +5815,15 @@
             <format attr='line-visibility' value='off' />
             <format attr='tick-color' value='#00000000' />
           </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok]' value='*mm.dd' />
+          </style-rule>
           <style-rule element='header'>
             <format attr='border-width' data-class='total' value='0' />
             <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok]' value='*mm.dd' />
           </style-rule>
           <style-rule element='pane'>
             <format attr='border-width' data-class='total' value='0' />
@@ -5863,18 +5886,22 @@
             </column>
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1490rbg10uljgr1e3vqsq0orm5o5'>
-            <column caption='회원수' datatype='integer' name='[Calculation_1162773141141536780]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='COUNTD(IFNULL([member code], [Member Code]))' />
-            </column>
             <column caption='기준날짜필터(가입일기준1년)' datatype='boolean' name='[Calculation_1162773141148614671]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='if DATETRUNC(&apos;month&apos;,[join date]) &lt;= DATETRUNC(&apos;month&apos;,[Parameters].[매개 변수 1])&#13;&#10;and DATETRUNC(&apos;month&apos;,[join date]) &gt; DATETRUNC(&apos;month&apos;,DATEADD(&apos;year&apos;,-1,[Parameters].[매개 변수 1])) then true&#13;&#10;else false&#13;&#10;end' />
             </column>
+            <column caption='회원의  최초구매일' datatype='boolean' name='[Calculation_1251437759021408256]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='DATETRUNC(&apos;month&apos;,[Sales Date]) = DATETRUNC(&apos;month&apos;,[join date])' />
+            </column>
+            <column caption='신규구매자 수' datatype='integer' name='[Calculation_1251437759021572097]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD(IF [Calculation_1251437759021408256] THEN [Member Code] END)' />
+            </column>
             <column aggregation='Sum' datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Member Code]' derivation='CountD' name='[ctd:Member Code:qk]' pivot='key' type='quantitative' />
             <column caption='Join Date' datatype='date' name='[join date]' role='dimension' type='ordinal' />
-            <column caption='Member Code1' datatype='integer' name='[member code]' role='dimension' type='ordinal' />
-            <column-instance column='[join date]' derivation='MY' name='[my:join date:ok]' pivot='key' type='ordinal' />
             <column-instance column='[Calculation_1162773141148614671]' derivation='None' name='[none:Calculation_1162773141148614671:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Calculation_1162773141141536780]' derivation='User' name='[usr:Calculation_1162773141141536780:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[join date]' derivation='Month-Trunc' name='[tmn:join date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_1251437759021572097]' derivation='User' name='[usr:Calculation_1251437759021572097:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:Calculation_1162773141148614671:nk]'>
             <groupfilter function='member' level='[none:Calculation_1162773141148614671:nk]' member='true' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
@@ -5886,14 +5913,19 @@
         </view>
         <style>
           <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk]' scope='rows' value='false' />
+            <encoding attr='space' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759021572097:qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759021572097:qk]' scope='rows' value='false' />
             <format attr='stroke-size' value='0' />
             <format attr='line-visibility' value='off' />
             <format attr='tick-color' value='#00000000' />
-            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141141536780:qk]' scope='rows' value='false' />
           </style-rule>
           <style-rule element='header'>
             <format attr='border-width' data-class='total' value='0' />
             <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:join date:ok]' value='*mm.dd' />
           </style-rule>
           <style-rule element='pane'>
             <format attr='border-width' data-class='total' value='0' />
@@ -5918,6 +5950,13 @@
             <format attr='stroke-size' value='0' />
             <format attr='line-visibility' value='off' />
           </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
         </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
@@ -5926,6 +5965,49 @@
             </view>
             <mark class='Bar' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.65867406129837036' />
+                <format attr='mark-color' value='#d4d4d4' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.65867406129837036' />
+                <format attr='mark-color' value='#d4d4d4' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759021572097:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
             <style>
               <style-rule element='mark'>
                 <format attr='size' value='0.65867406129837036' />
@@ -5938,10 +6020,238 @@
             </style>
           </pane>
         </panes>
-        <rows>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141141536780:qk]</rows>
-        <cols>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[my:join date:ok]</cols>
+        <rows>([federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk] + [federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759021572097:qk])</rows>
+        <cols>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:join date:ok]</cols>
       </table>
-      <simple-id uuid='{B576275C-2841-435B-96BC-3830B575B68D}' />
+      <simple-id uuid='{0FA97CE1-EBA0-4C25-923D-03CDB1441225}' />
+    </worksheet>
+    <worksheet name='4-7. 월별 재구매 회원수'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sales Master' name='federated.1490rbg10uljgr1e3vqsq0orm5o5' />
+            <datasource caption='매개 변수' name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='기준날짜' datatype='date' name='[매개 변수 1]' param-domain-type='any' role='measure' type='quantitative' value='#2019-12-11#'>
+              <calculation class='tableau' formula='#2019-12-11#' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1490rbg10uljgr1e3vqsq0orm5o5'>
+            <column caption='구매자 수(2회 이상)' datatype='integer' name='[Calculation_1251437759024893954]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD(IF { FIXED [기준날짜필터(6개월)(복사본)_1162773141166514192], DATETRUNC(&apos;month&apos;, [Sales Date]), [Member Code] : COUNTD([Order No])} &gt; 1 THEN [Member Code] END)' />
+            </column>
+            <column aggregation='Sum' datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Order No]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Member Code]' derivation='CountD' name='[ctd:Member Code:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[기준날짜필터(6개월)(복사본)_1162773141166514192]' derivation='None' name='[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Date]' derivation='Month-Trunc' name='[tmn:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_1251437759024893954]' derivation='User' name='[usr:Calculation_1251437759024893954:qk]' pivot='key' type='quantitative' />
+            <column caption='기준날짜필터(12개월)' datatype='boolean' name='[기준날짜필터(6개월)(복사본)_1162773141166514192]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='if DATETRUNC(&apos;month&apos;,[Sales Date]) &lt;= DATETRUNC(&apos;month&apos;, [Parameters].[매개 변수 1]) &#13;&#10;and DATETRUNC(&apos;month&apos;,[Sales Date]) &gt; DATETRUNC(&apos;month&apos;, dateadd(&apos;month&apos;,-12,[Parameters].[매개 변수 1])) THEN TRUE&#13;&#10;ELSE FALSE &#13;&#10;END' />
+            </column>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]'>
+            <groupfilter function='member' level='[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]' member='true' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk]' scope='rows' value='false' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+            <encoding attr='space' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok]' value='*mm.dd' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok]' value='*mm.dd' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='div-level' scope='rows' value='0' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.65867406129837036' />
+                <format attr='mark-color' value='#d4d4d4' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.65867406129837036' />
+                <format attr='mark-color' value='#d4d4d4' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.65867406129837036' />
+                <format attr='mark-color' value='#d4d4d4' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1490rbg10uljgr1e3vqsq0orm5o5].[ctd:Member Code:qk] + [federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk])</rows>
+        <cols>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok]</cols>
+      </table>
+      <simple-id uuid='{9E834713-DBE5-40B9-B08D-6E1859AAA4A2}' />
+    </worksheet>
+    <worksheet name='4-8. 객단가 및 건단가'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sales Master' name='federated.1490rbg10uljgr1e3vqsq0orm5o5' />
+            <datasource caption='매개 변수' name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='기준날짜' datatype='date' name='[매개 변수 1]' param-domain-type='any' role='measure' type='quantitative' value='#2019-12-11#'>
+              <calculation class='tableau' formula='#2019-12-11#' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1490rbg10uljgr1e3vqsq0orm5o5'>
+            <column caption='Sales' datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column caption='객단가' datatype='real' name='[Calculation_1162773141061378056]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Amount]) / COUNTD([Member Code])' />
+            </column>
+            <column caption='건단가' datatype='real' name='[Calculation_1162773141076049930]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Amount]) / COUNTD([Order No])' />
+            </column>
+            <column aggregation='Sum' datatype='integer' name='[Member Code]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Order No]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Sales Date]' role='dimension' type='ordinal' />
+            <column-instance column='[기준날짜필터(6개월)(복사본)_1162773141166514192]' derivation='None' name='[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Date]' derivation='Month-Trunc' name='[tmn:Sales Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_1162773141061378056]' derivation='User' name='[usr:Calculation_1162773141061378056:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1162773141076049930]' derivation='User' name='[usr:Calculation_1162773141076049930:qk]' pivot='key' type='quantitative' />
+            <column caption='기준날짜필터(12개월)' datatype='boolean' name='[기준날짜필터(6개월)(복사본)_1162773141166514192]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='if DATETRUNC(&apos;month&apos;,[Sales Date]) &lt;= DATETRUNC(&apos;month&apos;, [Parameters].[매개 변수 1]) &#13;&#10;and DATETRUNC(&apos;month&apos;,[Sales Date]) &gt; DATETRUNC(&apos;month&apos;, dateadd(&apos;month&apos;,-12,[Parameters].[매개 변수 1])) THEN TRUE&#13;&#10;ELSE FALSE &#13;&#10;END' />
+            </column>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141061378056:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141076049930:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]'>
+            <groupfilter function='member' level='[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]' member='true' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]</column>
+            <column>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.1490rbg10uljgr1e3vqsq0orm5o5].[Multiple Values]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[Multiple Values]</rows>
+        <cols>([federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:Sales Date:ok] / [federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{E930707E-5150-4A5D-808B-A0ADC6BC64CD}' />
     </worksheet>
     <worksheet name='4. 회원 매출'>
       <table>
@@ -7652,8 +7962,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='2050' minheight='2050' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='347' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='346' param='vert' type-v2='layout-flow' w='99000' x='500' y='889'>
+            <zone h='100000' id='355' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='354' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='48' h='6222' id='119' is-fixed='true' is-scaled='1' param='C:/Users/okso6/Desktop/KakaoTalk_20210811_115048141.jpg' type-v2='bitmap' w='11750' x='500' y='888'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -8794,8 +9104,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='2500' minheight='2500' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='275' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='274' param='vert' type-v2='layout-flow' w='99000' x='500' y='889'>
+            <zone h='100000' id='283' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='282' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='48' h='6222' id='119' is-fixed='true' is-scaled='1' param='C:/Users/okso6/Desktop/KakaoTalk_20210811_115048141.jpg' type-v2='bitmap' w='11750' x='500' y='888'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -9656,8 +9966,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1750' minheight='1750' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='275' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='274' param='vert' type-v2='layout-flow' w='99000' x='500' y='889'>
+            <zone h='100000' id='283' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='282' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='48' h='6222' id='119' is-fixed='true' is-scaled='1' param='C:/Users/okso6/Desktop/KakaoTalk_20210811_115048141.jpg' type-v2='bitmap' w='11750' x='500' y='888'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -10185,8 +10495,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='275' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='274' param='vert' type-v2='layout-flow' w='99000' x='500' y='889'>
+            <zone h='100000' id='283' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='282' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='48' h='6222' id='119' is-fixed='true' is-scaled='1' param='C:/Users/okso6/Desktop/KakaoTalk_20210811_115048141.jpg' type-v2='bitmap' w='11750' x='500' y='888'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -10389,7 +10699,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='112' />
+      <active id='-1' />
       <simple-id uuid='{B907D205-9FE1-4CF3-B0DF-2553E4468705}' />
     </window>
     <window class='dashboard' name='실적요약-회원 지표 분석' tab-color='#4f779a'>
@@ -10407,7 +10717,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='112' />
+      <active id='-1' />
       <simple-id uuid='{FB48C1E1-E256-4127-BFEA-CAEF76C73C3D}' />
     </window>
     <window class='dashboard' name='KPI 모니터링' tab-color='#f66273'>
@@ -10470,12 +10780,12 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='112' />
+      <active id='-1' />
       <simple-id uuid='{D26B1B95-EFE3-4D2F-8231-DFD3BF8D530A}' />
     </window>
     <window class='dashboard' name='월별 성과' tab-color='#dec77b'>
       <viewpoints />
-      <active id='96' />
+      <active id='-1' />
       <simple-id uuid='{10CE3154-3E6D-49C3-ADA5-831DD41C522D}' />
     </window>
     <window class='worksheet' name='4-1. Active 회원'>
@@ -10651,28 +10961,19 @@
       <viewpoint>
         <zoom type='entire-view' />
         <selection-collection>
-          <tuple-selection>
-            <tuple-reference>
-              <tuple-descriptor>
-                <pane-descriptor>
-                  <x-fields>
-                    <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:join date:ok]</field>
-                  </x-fields>
-                  <y-fields>
-                    <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141141536780:qk]</field>
-                  </y-fields>
-                </pane-descriptor>
-                <columns>
+          <node-selection select-tuples='false'>
+            <oriented-node-reference orientation='horizontal'>
+              <node-reference>
+                <fields>
                   <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[tmn:join date:ok]</field>
-                  <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1162773141141536780:qk]</field>
-                </columns>
-              </tuple-descriptor>
-              <tuple>
-                <value>#2019-03-01 00:00:00#</value>
-                <value>139</value>
-              </tuple>
-            </tuple-reference>
-          </tuple-selection>
+                </fields>
+                <multibucket>
+                  <bucket>#2019-05-01 00:00:00#</bucket>
+                </multibucket>
+              </node-reference>
+              <page-reference />
+            </oriented-node-reference>
+          </node-selection>
         </selection-collection>
         <highlight>
           <color-one-way>
@@ -10716,7 +11017,7 @@
       </viewpoint>
       <simple-id uuid='{6AC6F8F3-326C-43BC-BE18-977E2155F29E}' />
     </window>
-    <window class='worksheet' maximized='true' name='4-6. 신규 가입 후 구매자'>
+    <window class='worksheet' name='4-6. 신규 가입 후 구매자'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -10741,15 +11042,94 @@
         <zoom type='entire-view' />
         <highlight>
           <color-one-way>
-            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[my:join date:ok]</field>
             <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:Calculation_1162773141148614671:nk]</field>
             <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:Member Code:ok]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[yr:Sales Date:ok]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[yr:join date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{A84479AB-78E3-4083-B5EC-AB03D0C843C1}' />
+    </window>
+    <window class='worksheet' name='4-7. 월별 재구매 회원수'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <selection-collection>
+          <node-selection select-tuples='false'>
+            <oriented-node-reference orientation='vertical'>
+              <node-reference>
+                <axis>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[usr:Calculation_1251437759024893954:qk]</axis>
+              </node-reference>
+              <page-reference />
+            </oriented-node-reference>
+          </node-selection>
+        </selection-collection>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:Calculation_1162773141148614671:nk]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:Member Code:ok]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[yr:Sales Date:ok]</field>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[yr:join date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{54A52146-ECA3-4477-8068-58AF1DCF9020}' />
+    </window>
+    <window class='worksheet' maximized='true' name='4-8. 객단가 및 건단가'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[:Measure Names]</field>
             <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[none:기준날짜필터(6개월)(복사본)_1162773141166514192:nk]</field>
             <field>[federated.1490rbg10uljgr1e3vqsq0orm5o5].[yr:Sales Date:ok]</field>
           </color-one-way>
         </highlight>
       </viewpoint>
-      <simple-id uuid='{654471EA-D005-490D-8AB1-EACBEDA26CBB}' />
+      <simple-id uuid='{B330483C-0666-40B4-BEA2-2623ADDF8F4D}' />
     </window>
     <window class='worksheet' hidden='true' name='1. 전체 매출'>
       <cards>
@@ -12362,110 +12742,189 @@
     </thumbnail>
     <thumbnail height='192' name='4-4. 연간 가입 트렌드' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAAE8ElEQVR4nO3dXVLbZhiG4UeW/5DBhAQMJiQkaTPpunKSPWULLIJtQEPTHzoQoJCCJVvC
-      ltSDtmdpbYINOM99Hb/4/cZwm48ZzRCUZVkKMFW57wMA94kAYI0AYI0AYI0AYI0AYI0AYI0A
-      YI0AYK163weYB+/fv9fR0dFEs+/evVO3253xiTAtBDCB/f19vX37duzc7u6ujo+PCWCOcAWC
-      NX4D4MEZjUYaDodj58IwVL1ev9UuAsCDk+e5BoPB2Ll6vX7rALgCwRoBwBoBwBoBwBoBwBoB
-      wBoBwBoBwBoBwBoBwBoBwNrcPAtUlqV6vd5Es+12e8anwbdibgKQ/n5KEJgmrkCwRgCwRgCw
-      RgCwRgCwRgCwRgCwRgCwRgCwRgCwRgCwRgCwduOH4ZIkUZ7nY+eiKFK1OlfP2sHQjX9C8zyf
-      6KlM/v825gFXIFgjAFjjko4vKopCcRyPnQuCQEtLS3dwotkgAPynSf7WC4LgDk4yOwTwwOV5
-      rqIoxs6FYahKhRvtTRHAA5emqbIsGzsXRZGazeYdnOjbwkcGrBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
-      rBEArBEArBEArBEArBEArBEArBEArFVv+gWNRkO1Wm3sXKUy/bYWFham/pqTePPmjXZ2diaa
-      7Xa7U91dq9Umei+r1Rt/K/9XEAT39n6HYTjR7jAMb70rKMuyvPWrAHPqqz42Pv/xSZdpqVaQ
-      amHtpVq1XAd7e1rd3FLST7XVXZ/2OSVJZZHrYH9PTzY2dXpyolevf1B8caxeJjWVarHzUq36
-      TFYrjS/18/G5OssLuhzkerX9VIe/fFSz/VhJr6cX289ns1jS+cmRkjxUZ6mmz1mo9ZVIH348
-      0PpmV/10qM31tRltLvXbxwO1Hq3q7PSTnr34XsEw1uHppTrLTanR1spSNJPN/asL/X7W09py
-      U8mwoq3uqn796YNajztKerG2n29NZc9X3VPidKSwHOlJu6n4WirjU0Ubr5X0YoVBMZWDfUke
-      n6q18Z36/YHaUUNFKSVZrso/Z0mGM1utsz97etquaViNFMeJynwoNRaVJrEajfFXwtvoDwsF
-      eaqTswtl2UDZ1ZkerT9TPxspKEcz21sOUwXRiq4uTpWmmYqi0Pllok4UqtZqK82uZ7b7/Kqv
-      1aiig8NjXV9nKq8ThYurGsQ91eu3v/r86y8DTgSvFxwcqwAAAABJRU5ErkJggg==
+      AAAE+ElEQVR4nO3czVLbZhiG4Uc/GNsQ20DABAjQtPseUA+zp9IFwzAZaIGkEEIAy7Jk/XTR
+      yXSJTDHUfe5r/aLvQ3AjaUYmqOu6FmAqfO0NAK+JAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCN
+      AGAtfu0NLJIsy5QkSaPZfr+vKIrmvCP8W1wBYI0rABbCdDpVURSNZtvttoIgaDRLAFgIRVEo
+      TdNGs+12u/FxuQWCNQKANQKANQKANQKANQKANQKANQKANQKANQKANQKAtYV7FyhJEpVl+ehc
+      HMfqdrsvsCMssoULoCiKRgE0fRsQ3rgFgjUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUC
+      gDUCgLWZX4bLskxZljWa7fV6M28IeEkzB1CWZeP/0Qj813ELBGsEAGsL94EYvI48z3VxcdFo
+      djgcLsyn8QgAjVRVpfF43Gh2kZ4RCWCBlGWpqqoenQuCQHHMj7YJztICSdNUeZ4/OheGoQaD
+      wQvsaPHxEAxrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr
+      BABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABrBABr8axfsLS0
+      pCAI5rGXRpaXl1XX9aNzYfj8bUdRpE6n02h2Hueo1WopiqJnXfvLeKJ0Wj46VxSFJq1uo2Ne
+      TQrd1cmjc60o1HC12fmM47jxuZ9FUDf5bcL/1q9Hv+v45v5V1t5e7eiXn398lbW/m/kKIEl1
+      Xerk6Ehvd/aUjDPtvdvS1+vPeshqdTTRytYPWmk991b/cXN1qWQaKizGijp9DTd6Ojk+0dbO
+      jsZprp3tzfktrlpnH0/U7W/o9vpKOwcfFE4TnV/fa7PXktoDrb15/r9U343ubvTpa6IPe1u6
+      uPqm/d2hTk+O9WZjqGSUaP/97tzWlqT7yzPVrVVN7/5Ud+tAyy3p+uxc/eGmilJ6s74+t7Wn
+      6UjHZ5+1/25dX+5SHe7v6tMfp4o6PaUP9zo4PNSsF94n3SdUoyt1t39SMkoUBX9fPpOsUFgX
+      2ui1lUyfctTmxnmloJpqsLamMAiUP1yrP3yv8SRXoGKua9fTVNHKuibjkWKVmuSFbu4Tve2G
+      aq30NMnn+83fPqQaLAc6vbxSnk9UZ/eK+9sajx60tDT/R7pSoapspDxJVFWVxne3Gmz0VcQr
+      qqaTua59fftNh+sd/fbxXHmeS3WtMoiVp4nanWU95VbmL65xE3aZuganAAAAAElFTkSuQmCC
     </thumbnail>
     <thumbnail height='192' name='4-5. 연간 구매 트렌드' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      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
-      AGAaAcC0/wImOYONQlB4XgAAAABJRU5ErkJggg==
+      AAAE3UlEQVR4nO3cTVMaWRiG4acB+RxBVNCoMSY1bPz/P2UWKcvKmJmQKCiC0NA0jT3LWdIS
+      0aKe+1q/9DlYddMHCgzSNE0FmMq99waA90QAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYA
+      sEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYA
+      sEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsFZ47w0AWYRhqDAMM822Wi0FQZBplgCwFabTqfr9
+      fqbZVquV+bocgWCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCN
+      3wNskfl8riRJVs4FQaBqtfoGO9p+BLBF+v2+RqPRyrlisahOp/MGO9p+HIFgjQBgjQBgjQBg
+      jQBgjQBg7cUfg97d3en+/n7lXBAEury8XGtTwFvhDgBrBABrBABrBABrfBcImSRJosFgkGm2
+      0WioVCpteEevgwCQSZIkmf87c7lc3poAOALBGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA
+      GgHAGgHA2tZ9Ga7b7SqO45VztVpN7Xb7DXaEbbZ1AURRpCiKVs7l8/k32A22HUcgWNu6O8B7
+      Gg6H6na7mWY7nY6KxeKGd4TfxR0A1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA1ggA
+      1govfUCtVlMQBCvnssyso9lsKkmSlXOlUunV1y6Xy2q1Wplm8/n8q69fr9dVLBbfZe1CoZD5
+      uW/ib1+tVjOv/xJBmqbpq18V2BIvvgNIUpoudf31qw5PzhRO5zr70Nagf6vxPFVFkWrtz6qt
+      fqFa20Pvp8JFTrlkqnyloaODuq6vrtU+OdF0Fuvk+PVfKf6X6vu3a1UbB3rs93Ty6Ytyi1A/
+      +k9q1YtSeU/N3crGVp+MHvRrEOrLWVvd3lDnp0e6ub7S7sGRwkmo84+nG1tbkm67/yjd+UOz
+      UU/No4/aLUlXf3d1etzSPJHah82Nrb2YTXT1/VbnH/Z1P5rp4vxUv/69Ub5S12z8pE8XF3rp
+      wWOt9wDPk56qx38qnITKB0tJUjhPlEsTHdTLChfrXDW7afys4HmhvWZTuSBQPO6rcfRR0yhW
+      oNXHo9+RLmbK1/YVTScqaKkoTvTwFOqwmlOxVlcUb/bJP45n2isFuvnZUxxHSudPKjSONZ2M
+      tbOz+bd0izSnZD5WOAm1fH7W4HGos4O65oWqlkm00bX7j0Nd7Ff017cfiuNYSlMtg4LiWahy
+      paR1jjL/AR4M9tVhlYYLAAAAAElFTkSuQmCC
     </thumbnail>
     <thumbnail height='192' name='4-6. 신규 가입 후 구매자' width='192'>
       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
-      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
-      Qn9zsPsAAAAASUVORK5CYII=
+      AAAF0UlEQVR4nO3du1IbdxiG8XclEEiYsxDnk8Nk4tqNuxSZyTXkAlK6SJUu15AuuYIUnrhL
+      kyKNy8wkVezEwzC2cQwmCBsLtIu0OmyazKTUgrWQzfv86m/2/8HMg3ZBQJAkSSLAVOGmFwBu
+      EgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA2shNL5AnjUZDBwcHqWZ3dnZUKpUy3gjvi1cA
+      WOMVALkQRZHCMEw1W61WFQRBqlkCQC5EUaR6vZ5qtlqtpr4ut0CwRgCwRgCwRgCwRgCwRgCw
+      RgCwRgCwRgCwRgCwRgCwlrv3Ah0eHiqO44FzlUpFtVrtGjZCnuUugFarpVarNXCuWCxewzbI
+      O26BYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYO3Sb4Y7PT1Vo9EYOBcEgTY3
+      N6+0FHBdLh1Ap9NRFEUD59L+bUbgJnELBGsEAGu5+4UY3Iw4jnV4eJhqtlarqVKpZLzRcBAA
+      Uun3+6me/SSp1+tlvM3wEECOtNttdbvdgXOFQkHlcvkaNso/AsiRk5OTVN+CLpVK2tnZuYaN
+      8o+HYFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgj
+      AFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgj
+      AFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgj
+      AFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgjAFgbuekF
+      gDQe7U/ru5/LqWa//0gqBumuSwDIhZNoVE/qo0O/LrdAsEYAsEYAsEYAsEYAsEYAsEYAsEYA
+      sEYAsEYAsEYAsEYAsEYAsEYAsMbboZFKq1vQ4+NKqtnpWlGTkxkvNCQEgFSOmiV99Wgr1ey3
+      y9JqNdN1hoZbIFgjAFgjAFgjAFgjAFi79HeBfno+o4e/TgycGy1KD+5caSfg2lw6gL/Ckp7U
+      SwPnSsUr7fOftt8Y08MnC6lmv9goam7wpwk3jJ8DXMLLxrge/D6eavbzT6S5jPfB++MZANZ4
+      BciRr39e1Q+/rQ6c256Xfrx/DQv9D+QugG9+Wdazk/7AuXu3i/py/RoWQq7lLoC907L+qA+e
+      W5nPfhfkH88AsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYA
+      sEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYA
+      sEYAsEYAsEYAsEYAsEYAsEYAsHbpf5R9b1saSZFNMaO0Prsr1ZuD5z6oDv/sD2vS/Y/TzU6X
+      h3/+p3ekzbnBc7OV4Z9dvZX+Y9/O4J+U391If34QpL9ukCRJcrWVgPy79CuAJCVJT3tPn6q6
+      sqYwamttuaa39SOdtxOV1dJEbVsTpWGv+q83x4cKOwUVupGK5Wktzk9pb3dPtZUVRRexVpYW
+      sjtcifaf7akyPa/T+rFWNm+r0An1qn6mhamSND6j2ckMvvz/o9l4o9dvQ91eq+ng+J02Vhf1
+      Ym9Xk/OLCpuhNtZXMztbko4OXioZvaWLxrFmF9c1OSbtPj/Q6tKC2l2pVp3N7OzORVO7+0fa
+      WJ7TSeNCWxurev3nCxXLU7o4P9Pm1talvvpLV3wG6DePVVnaUdgMVQx6kqSw3VUh6Wp+alxh
+      5ypXTS+K+wr6Hc3MzqoQBIrP65peXFfUihWom+nZSedCxYk5taKmRtRTK+7qzVmoaqWg0sSU
+      WnG2H/zp+YVmxgK9ODxWHLeUtM80Mr2kqHmu0dHsH+k6SUHd9rnCZqhev6+3p++0Nj+l9khF
+      vW4r07Prp++0NVfW42evFMexlCTqBSOKL0KNl8d0lVuZvwEiey7Q66ZZTQAAAABJRU5ErkJg
+      gg==
+    </thumbnail>
+    <thumbnail height='192' name='4-7. 월별 재구매 회원수' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAFrklEQVR4nO3czW4bVRyG8Xdsx46d1vlynTRpk7RYQNh2wwokJNgjIdGLYMWeW4AFCLiH
+      iisAIQR3gCipoqhNoUmDnTZx4vHHZJJhAQt2Hhs7kfs+v/VfPseRHp+xPU6QJEkiwFTmqjcA
+      XCUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUC
+      gDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUC
+      gLXcVW8ASKPdbisMw1SzlUpFQRCkmiUATIR2u61Go5FqtlKppH5cLoFgjQBgjQBgjQBgjQBg
+      jQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjd8DTJBer6c4jvvOZTIZFYvFS9jR5COA
+      CXJ4eKhms9l3Lp/Pq1arXcKOJh+XQLBGALBGALBGALBGALBGALA28Meg9Xpdh4eHfeeCINDm
+      5uZQmwIuCycArBEArBEArBEArHEvEFKJ41hHR0epZsvlsgqFwph3NBoEgFTiOE7935mnp6cn
+      JgAugWCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGBt4m6G29/fVxRFfedKpZKq
+      1eol7AiTbOIC6Ha76na7feey2ewl7AaTjksgWJu4E+AqNZtN7e3tpZqt1WrK5/Nj3hH+L04A
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMA
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMA
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMA
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMA
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWMtd9QaANL7bqujz
+      HyupZn//TMoG6R6XEwDWBj4B/gqntFUv9Z3LZAJtbg61J+DSDBzAD0/m9e0v833n8lnpo3eG
+      2hNwabgEgjUCgDUCgDUCgDW+BxjAr/UZffHTeqrZr1dzWs6Pdv0HWxX9vD3Xd251LqMva6Nd
+      +1U1cQF8+v1dbR30n3v/Temrj0e7drOb08NGuj9ZdD7atSXp2UlBDxuFvnPti9Gv/ariEgjW
+      Ju4EwNXYPZ7Whw/eSjX7zX3pvTfGvKER4QSANQKANQKAtYHfA7x9R8qlyCY7prTu35Marf5z
+      r6W7c3Ygr1elT95NNztbHP36H2xK6wv95+b736s4sMq19M/9zuLo17+3ln79IOWt0JIUJEmS
+      DLclYPIN9SlQkpxr59EjVVZuKWz3dOtmVS8bBzrtJSqqq5nqHc2M+Eug/3pR31d4llEmbitb
+      nNXSYlk72zuqrqyo3Ym0snxjfIsr0dPHOyrNLuqoUdfK+l1lzkI9a5zoRjkvTc9p/voYXv7/
+      1Wq+0POXoe7eqmqvfqy11SXt7mzr+uKSwlaotdurY1tbkg72/lAydU2dZl3zS7d1vSBtP9nT
+      6vIN9WKpWul/p/CwzjotbT890NrNBR02O9pYW9XzP3eVLZbVOT3R+sbGQK/+0pDvAS5adZWW
+      awpbobLBP9/4hL1YmSTWYnla4dkwj5peO7pQcHGmufl5ZYJA0WlDs0u31e5GChSPde3krKPs
+      zIK67ZZyOlc3ivXiJFSllFF+pqxuNN4nf3Ta0Vwh0O5+XVHUVdI7UW52We3Wqaamxv+W7izJ
+      KO6dKmyFOr+40MujY91aLKuXK+k87o517cbRsTYWivrt8TNFUSQlic6DnKJOqOliQcNcyvwN
+      wj4hFd9Uzx0AAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='4-8. 객단가 및 건단가' width='192'>
+      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
     </thumbnail>
     <thumbnail height='192' name='KPI 모니터링' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
